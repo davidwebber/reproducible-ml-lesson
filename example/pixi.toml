@@ -1,0 +1,37 @@
+[workspace]
+channels = ["conda-forge"]
+name = "example"
+platforms = ["linux-64", "win-64", "osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+
+[tasks.start]
+depends-on = "lab"
+description = "start the notebook"
+
+[tasks.lab]
+description = "Launch Jupyter Lab"
+cmd = "jupyter lab"
+
+[tasks.A]
+cmd = "echo running A"
+
+[tasks.B]
+cmd = "echo running B"
+#depends-on = "A"
+
+[tasks.C]
+cmd = "echo running C"
+depends-on = ["A", "B"]
+
+[tasks.D]
+cmd = "echo running D"
+depends-on = "D"
+
+
+[dependencies]
+python = ">=3.13.5,<3.14"
+numpy = ">=2.3.2,<3"
+notebook = ">=7.4.5,<8"
+jupyterlab = ">=4.4.5,<5"
