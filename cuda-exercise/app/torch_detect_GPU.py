@@ -1,9 +1,9 @@
-# torch_detect_GPU.py
 import torch
 from torch import cuda
 
 if __name__ == "__main__":
     if torch.backends.cuda.is_built():
+        # c.f. https://chrisalbon.com/deep_learning/pytorch/basics/check_if_pytorch_is_using_gpu/
         print(f"PyTorch build CUDA version: {torch.version.cuda}")
         print(f"PyTorch build cuDNN version: {torch.backends.cudnn.version()}")
         print(f"PyTorch build NCCL version: {torch.cuda.nccl.version()}")
